@@ -1,2 +1,2 @@
 # PythonDataAnalytics
-This is a repo for committing the assignment of the course of Python Data Analytics
+This repo is for submitting the assignments of the course Python Data Analytics
