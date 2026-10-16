@@ -1,0 +1,15 @@
+name: Verify week 4 SVM homework
+on:
+  push:
+    paths:
+      - '.github/workflows/svm-check.yml'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install --quiet numpy pandas scikit-learn
+      - run: python 第四周作业_SVM.py
