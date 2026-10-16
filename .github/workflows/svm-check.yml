@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - '.github/workflows/svm-check.yml'
+permissions:
+  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -12,4 +14,11 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install --quiet numpy pandas scikit-learn
-      - run: python 第四周作业_SVM.py
+      - run: python 第四周作业_SVM.py > 第四周实验结果.txt
+      - name: Commit test output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 第四周实验结果.txt
+          git commit -m "Record reproducible SVM results" || exit 0
+          git push
